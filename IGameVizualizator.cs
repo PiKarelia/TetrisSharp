@@ -3,7 +3,8 @@ using System.Collections.Generic;
 
 namespace TetrisSharp
 {
-    public class Game
+    public interface IGameVizualizator
     {
+        void RedrawBoard(bool[,] board);
     }
 }

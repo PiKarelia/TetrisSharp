@@ -1,4 +1,5 @@
 ﻿using System;
+using TetrisSharp.ConsoleVizualization;
 
 namespace TetrisSharp
 {
@@ -6,7 +7,14 @@ namespace TetrisSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.SetWindowSize( 60,50);
+
+            //TODO: Add injection of IGameVizualizator instead
+            IGameVizualizator vizualizator = new ConsoleVizualizator();
+
+            new Game(vizualizator);
+
+            Console.ReadLine();
         }
     }
 }
