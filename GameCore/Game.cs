@@ -16,6 +16,22 @@ namespace TetrisSharp
             _gameVizualizator = gameVizualizator;
 
             Init();
+
+            Start();
+        }
+
+        private void Start()
+        {
+            while (IsNotGameOver())
+            {
+
+            }
+        }
+
+        private bool IsNotGameOver()
+        {
+            // TODO: implement
+            return true;
         }
 
         private void Init()
