@@ -7,9 +7,9 @@ namespace TetrisSharp
     {
         static void Main(string[] args)
         {
-            Console.SetWindowSize( 60,50);
+            Console.SetWindowSize(60, 50);
 
-            //TODO: Add injection of IGameVizualizator instead
+            //TODO: Add injection of these instead
             IGameVizualizator vizualizator = new ConsoleVizualizator();
 
             new Game(vizualizator);

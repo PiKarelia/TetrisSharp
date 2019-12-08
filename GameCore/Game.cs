@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Timers;
 
 namespace TetrisSharp
 {
@@ -11,6 +12,8 @@ namespace TetrisSharp
         private bool[,] _board;
         private int _score;
 
+        private Timer _timer;
+
         public Game(IGameVizualizator gameVizualizator)
         {
             _gameVizualizator = gameVizualizator;
@@ -18,14 +21,28 @@ namespace TetrisSharp
             Init();
 
             Start();
+
         }
 
         private void Start()
         {
-            while (IsNotGameOver())
-            {
 
+            var key = Console.ReadKey();
+            while (key.Key != ConsoleKey.Escape)
+            {
+                KeyPressed(key.Key);
+                key = Console.ReadKey();
             }
+
+            //while (IsNotGameOver())
+            //{
+
+            //}
+        }
+
+        private void KeyPressed(ConsoleKey key)
+        {
+            Console.Write(key.ToString());
         }
 
         private bool IsNotGameOver()
@@ -43,8 +60,16 @@ namespace TetrisSharp
             _score = 0;
 
             _gameVizualizator.RedrawBoard(_board);
+
+
+            _timer = new Timer(5000);
+
+            _timer.Elapsed += (sender, e) => StepExpired();
         }
 
-
+        private void StepExpired()
+        {
+            Console.WriteLine("next step please");
+        }
     }
 }
