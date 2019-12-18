@@ -6,6 +6,17 @@ namespace TetrisSharp.ConsoleVizualization
     public class ConsoleVizualizator : IGameVizualizator
     {
         private readonly int _numberOfIgnoredRows = 4;
+
+        public void DrawScore(int score)
+        {
+            Console.SetCursorPosition(5, 30);
+            Console.Write("Score:");
+            Console.SetCursorPosition(5, 31);
+            Console.Write("         ");
+            Console.SetCursorPosition(5, 31);
+            Console.Write(score);
+        }
+
         public void RedrawBoard(bool[,] board)
         {
 
@@ -25,7 +36,7 @@ namespace TetrisSharp.ConsoleVizualization
                 Console.SetCursorPosition(2 + 2, 2 + i - _numberOfIgnoredRows);
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    Console.WriteLine(board[i, j] ? "▓▓" : "  ");
+                    Console.Write(board[i, j] ? "▓▓" : "  ");
                 }
 
                 Console.SetCursorPosition(2 + board.GetLength(1) * 2 + 2, 2 + i - _numberOfIgnoredRows);

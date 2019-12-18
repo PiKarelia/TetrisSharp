@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace TetrisSharp.GameCore.Figures
 {
     public interface IFigure
     {
-        void Rorate();
+        Point[] PointsOfFigure { get; set; }
+
+        void Rotate();
     }
 }
